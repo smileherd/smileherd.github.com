@@ -2,18 +2,17 @@
     margin: 0 auto;
     width: 60%;
     color: #404040;
-    font: 12px/1.2 georgia, "\5fae\8f6f\96c5\9ed1", sans-serif;
+    font: 12px/1.5 tahoma, arial, "\5fae\8f6f\96c5\9ed1", sans-serif;
 
     .blog-hd {
         border-bottom: 1px solid #404040;
         padding: 20px 0;
-        font-size: 32px;
+        font: 32px/1.2 georgia, serif;
         font-weight: bold;
     }
 
     .blog-article {
         margin: 20px auto;
-        line-height: 1.5;
     }
 
     .blog-ft {
@@ -21,5 +20,6 @@
         border-top: 1px dotted #404040;
         padding: 10px 0;
         text-align: center;
+        font: 12px/1.2 georgia, serif;
     }
 }
