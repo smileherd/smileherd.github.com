@@ -1,7 +1,7 @@
 .smileherd-blog {
-  margin: 0 auto; }
+  margin: 0 auto;
+  width: 60%;
+  color: #404040;
+  font: 12px/1.5 tahoma, arial, "\5fae\8f6f\96c5\9ed1", sans-serif; }
   .smileherd-blog .blog-article {
-    margin: 50px auto;
-    width: 60%;
-    color: #404040;
-    font: 12px/1.5 tahoma, arial, "\5fae\8f6f\96c5\9ed1", sans-serif; }
+    margin: 50px auto; }
