@@ -1,0 +1,18 @@
+.blog-article {
+    .article-hd {
+        .article-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+    .article-content {
+        .content-title {
+            display: none;
+        }
+        p {
+            margin: 10px 0;
+        }
+    }
+    .article-comments {}
+    .article-footer {}
+}
