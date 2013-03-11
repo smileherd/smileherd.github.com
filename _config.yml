@@ -1,1 +1,2 @@
 baseurl: /blog
+paginate: 10 // posts per page
