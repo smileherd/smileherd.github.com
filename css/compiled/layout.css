@@ -4,11 +4,27 @@
   color: #404040;
   font: 12px/1.5 tahoma, arial, "\5fae\8f6f\96c5\9ed1", sans-serif; }
   .smileherd-blog .blog-hd {
-    border-bottom: 1px solid #404040;
     padding: 20px 0;
     font: 32px/1.2 georgia, serif;
     font-weight: bold;
     text-align: right; }
+  .smileherd-blog .blog-nav {
+    position: absolute;
+    left: -200px; }
+    .smileherd-blog .blog-nav .nav-item a {
+      display: block;
+      margin: 0 20px 20px;
+      padding: 20px 0;
+      width: 150px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      color: fff; }
+    .smileherd-blog .blog-nav .nav-item.home a {
+      background-color: #f70; }
+    .smileherd-blog .blog-nav .nav-item.about-me a {
+      background-color: #07f; }
   .smileherd-blog .blog-post {
     margin: 20px auto; }
   .smileherd-blog .blog-ft {
