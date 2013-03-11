@@ -3,8 +3,6 @@ layout: post
 title: Mac 下 ssh 自动连接
 ---
 
-**{{ page.title }}**
-
 Mac 下借助 autossh 工具可以实现 ssh 断线自动连接功能。（在此之前，首先需要配置 [ssh 免输入密码登录][1]）
 
 autossh 通过监控 ssh 进程运行和 ssh 通道通信情况来判断 ssh 是否处于正常通信状态，一旦通信断开 autossh 将自动重启 ssh 连接。

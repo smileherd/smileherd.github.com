@@ -13,6 +13,13 @@ body > *:first-child {
 body > *:last-child {
   margin-bottom: 0 !important; }
 
+.blog-post .post-title {
+  font-size: 16px;
+  font-weight: bold; }
+.blog-post .post-date {
+  color: #808080; }
+.blog-post strong {
+  font-weight: bold; }
 .blog-post a {
   color: #4183C4; }
 .blog-post a.absent {
