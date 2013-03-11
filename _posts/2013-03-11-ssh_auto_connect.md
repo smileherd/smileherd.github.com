@@ -66,6 +66,7 @@ ok，将这两个选项的配置附加到 /etc/ssh/ssh_config 文件里：
 **参考：**
 
 http://blog.hebine.com/archives/1621.html
+
 http://www.2cto.com/os/201301/182222.html
 
 [1]:http://smileherd.github.com/2013/03/07/authorized_keys_config
