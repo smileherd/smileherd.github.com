@@ -22,7 +22,7 @@
       font-size: 14px;
       font-weight: bold;
       color: #fff;
-      transition: color 0.5s, background-color 0.5s; }
+      transition: color 1s, background-color 1s; }
     .smileherd-blog .blog-nav .nav-item.home a {
       background-color: #f70; }
     .smileherd-blog .blog-nav .nav-item.home a:hover {
