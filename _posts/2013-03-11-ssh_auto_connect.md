@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Mac 下 ssh 自动连接
 ---
 
