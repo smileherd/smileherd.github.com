@@ -7,8 +7,9 @@
     border-bottom: 1px solid #404040;
     padding: 20px 0;
     font: 32px/1.2 georgia, serif;
-    font-weight: bold; }
-  .smileherd-blog .blog-post{
+    font-weight: bold;
+    text-align: right; }
+  .smileherd-blog .blog-post {
     margin: 20px auto; }
   .smileherd-blog .blog-ft {
     margin: 20px 0;
