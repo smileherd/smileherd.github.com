@@ -1,4 +1,5 @@
 .smileherd-blog {
+    position: relative;
     margin: 0 auto;
     width: 60%;
     color: #404040;
@@ -24,14 +25,23 @@
             text-decoration: none;
             font-size: 14px;
             font-weight: bold;
-            color: fff;
+            color: #fff;
+            transition: color 0.5s, background-color 0.5s;
         }
 
         .nav-item.home a {
             background-color: #f70;
         }
+        .nav-item.home a:hover {
+            color: #f70;
+            background-color: #fff;
+        }
         .nav-item.about-me a {
             background-color: #07f;
+        }
+        .nav-item.about-me a:hover {
+            color: #07f;
+            background-color: #fff;
         }
     }
 

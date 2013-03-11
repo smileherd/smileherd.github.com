@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: ssh 配置 authorized_keys 后仍需输入密码问题
 ---
 
