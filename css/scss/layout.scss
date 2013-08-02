@@ -31,6 +31,7 @@
 
         .nav-item.home a {
             background-color: #f70;
+            border: 1px solid #f70;
         }
         .nav-item.home a:hover {
             color: #f70;
@@ -38,6 +39,7 @@
         }
         .nav-item.about-me a {
             background-color: #07f;
+            border: 1px solid #07f;
         }
         .nav-item.about-me a:hover {
             color: #07f;
@@ -46,7 +48,7 @@
     }
 
     .blog-post {
-        margin: 20px auto;
+        margin: 20px auto 50px;
     }
 
     .blog-ft {
