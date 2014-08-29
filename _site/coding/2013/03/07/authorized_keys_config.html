@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="/css/compiled/reset.css">
+        <link rel="stylesheet" href="/css/compiled/layout.css">
+        <link rel="stylesheet" href="/css/compiled/post.css">
+        <link rel="stylesheet" href="/css/compiled/pygments.monokai.css">
+        <!--[if lt IE 9]>
+            <script src="/js/html5shiv.js"></script>
+        <![endif]-->
+        <title>ssh 配置 authorized_keys 后仍需输入密码问题</title>
+    </head>
+    <body class="smileherd-blog">
+        <header class="blog-hd">
+            <h1 class="blog-title">
+                <span class="title-career">C.A.R.2.E.R</span>
+            </h1>
+        </header>
+        <nav class="blog-nav hidden">
+            <ul class="nav-list">
+                <li class="nav-item home"><a href="/">主页</a></li>
+                <li class="nav-item about-me"><a href="/about/">关于我</a></li>
+            </ul>
+        </nav>
+        <div class="blog-post">
+            <h2 class="post-title"><a href="/coding/2013/03/07/authorized_keys_config.html">ssh 配置 authorized_keys 后仍需输入密码问题</a></h2>
+            <p class="post-date">07 Mar 2013</p>
+            <p>原因在于 authorized_keys 文件写权限只能为所有者拥有。如果除所有者之外还有别的用户有写权限的话，出于安全原因 sshd 就不会使用此文件。所以仍需要用户手动输入密码。</p>
+
+<p>解决方法就很简单了，只需关闭组用户和其它用户的 authorized_keys 文件写权限即可。值得注意的是<strong>文件所在目录 .ssh 的写权限同样要对组用户和其它用户关闭。</strong>否则也会导致文件失效。</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 取消组用户和其它用户对 authorized_keys 文件的写权限</span>
+chmod go-w authorized_keys
+
+<span class="c"># 取消组用户和其它用户对 .ssh 目录的写权限</span>
+chmod go-w .ssh</code></pre></div>
+
+<p>断开链接后再 ssh 登录就不用输入密码了。</p>
+
+<p>PS：所有操作环境是指目标主机…</p>
+
+        </div>
+        <footer class="blog-ft">
+            <p>by Me &copy; 2012-2014</p>
+            <p>smileherd#gmail.com</p>
+        </footer>
+    </body>
+</html>
