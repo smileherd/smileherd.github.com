@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="/css/compiled/reset.css">
+        <link rel="stylesheet" href="/css/compiled/layout.css">
+        <link rel="stylesheet" href="/css/compiled/post.css">
+        <link rel="stylesheet" href="/css/compiled/pygments.monokai.css">
+        <!--[if lt IE 9]>
+            <script src="/js/html5shiv.js"></script>
+        <![endif]-->
+        <title>smileherd - blog</title>
+    </head>
+    <body class="smileherd-blog">
+        <header class="blog-hd">
+            <h1 class="blog-title">
+                <span class="title-career">C.A.R.2.E.R</span>
+            </h1>
+        </header>
+        <nav class="blog-nav hidden">
+            <ul class="nav-list">
+                <li class="nav-item home"><a href="/">主页</a></li>
+                <li class="nav-item about-me"><a href="/about/">关于我</a></li>
+            </ul>
+        </nav>
+        
+    
+        
+            <div class="blog-post">
+                <h2 class="post-title"><a href="/coding/2014/08/28/product-life-cycle.html">产品开发流程简介</a></h2>
+                <p class="post-date">28 Aug 2014</p>
+                <img src="/img/20140828/product-loop.png">
+            </div>
+        
+    
+
+    
+        
+            <div class="blog-post">
+                <h2 class="post-title"><a href="/coding/2013/08/12/people-v.s.-product.html">菜种不好，锄头再牛逼也不是好农夫</a></h2>
+                <p class="post-date">12 Aug 2013</p>
+                <p>在我离开我的上一家雇主的之前，公司开始试着推行 bug 率与 KPI 挂钩。人在面对权威的时候总是会忍不住怀疑自己的判断是不是因为见识短浅，后来经过慎重的考虑，我最终确认这是一件极其傻逼的事情。</p>
+
+<p>之所以这样说是因为对于一个团队而言，我想不出什么东西比目标一致更重要了。当测试跟开发开始为了孩子的奶粉钱，自己的 003 相互扯皮的时候，能维系这个团队的实际上就只剩下那点工资了。</p>
+
+<p>如果说非要给员工加一个 KPI 这道金箍的话，那就只能是产品本身。一个项目团队所有成员，无论角色，都应该是同样的考核内容，不然必然会导致利益冲突。而对于一个做产品的团队来说，还有什么比做出一个好产品更适合作为考核标准的呢？</p>
+
+<p>“真理往往都是废话”，这话精辟的跟二十几个国家领导人说过一样。</p>
+
+<p>这么个浅显到当众说出来都怕被人扔烂西红柿的道理，摊子大了就不容易看透了。火星妹子横看竖看地球都是圆的，可你我身在其中，就是觉得天圆地方。工程师理直气壮的玩架构，测试大姐理直气壮的要求充分回归，设计 MM 理直气壮的要求像素级还原。最终，我们大家理直气壮的做出了一个烂产品。</p>
+
+<p>之前我总是喜欢问一个问题：为什么要这么做？<br />
+有次把跟我搭伙的工程师哥们问火了，说你管那么多干嘛？产品让这么做就这么做呗！</p>
+
+<p>其实这也难怪，每天问二十几遍为什么除了让产品恼火外对自己一点好处也没有，反倒有可能在需求方评价的时候荣获一枚恶评。当然，各方大佬开会的时候总是嚷嚷着，“鼓励大家质疑，鼓励大家讨论，对事不对人嘛！”。你若仔细想想，就知道这话还没男人骗女人上床前的海誓山盟靠谱。缺乏制度上的激励，一面喊口号，一面又以另一套考核标准来要求员工，这种挂羊头卖狗肉的事情你我除了阳奉阴违外就只能… 大家都是混口饭吃嘛，女人何苦为难女人。</p>
+
+<p>程序员，实际上团队里的任何一个角色，从运营到设计，都应该保持对产品的质疑。这不单单是一个弥补产品有可能的设计缺陷的契机，更大的意义在于尽量避免语言沟通的非精确性带来的产品理解误差。</p>
+
+<p>我一直坚持认为，判断一个程序员是否优秀的标准只有一个，那就是是否做出了优秀的产品。是的，对于产品的关注决不应该只是产品经理的事情，而应该是整个团队成员的共同目标。这并非是说关注产品就是忽视单纯的技术创新，但在一个实时通信项目组里，一个专注于开发新一代数据库的架构师显然不是一个优秀的项目成员。</p>
+
+<p>这就像种菜一样，菜种不好，锄头磨的再闪亮，菜籽码放的再整齐，又有什么价值呢？</p>
+
+            </div>
+        
+    
+
+    
+        
+            <div class="blog-post">
+                <h2 class="post-title"><a href="/coding/2013/03/11/ssh_auto_connect.html">Mac 下 ssh 自动连接</a></h2>
+                <p class="post-date">11 Mar 2013</p>
+                <p>Mac 下借助 autossh 工具可以实现 ssh 断线自动连接功能。（在此之前，首先需要配置 <a href="http://smileherd.github.com/2013/03/07/authorized_keys_config">ssh 免输入密码登录</a>）</p>
+
+<p>autossh 通过监控 ssh 进程运行和 ssh 通道通信情况来判断 ssh 是否处于正常通信状态，一旦通信断开 autossh 将自动重启 ssh 连接。</p>
+
+<p>如果机器上已安装包管理器 Homebrew 或 MacPorts，那么安装 autossh 是很简单的：</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Homebrew 安装 autossh</span>
+brew install autossh
+
+<span class="c"># MacPorts 安装 autossh</span>
+port install autossh</code></pre></div>
+
+<p>当然，也可以自己下载 autossh 编译安装。</p>
+
+<p>安装完 autossh 之后就可以通过这条命令来启动 ssh 自动连接：</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">autossh -M <span class="m">0</span> -D <span class="m">1984</span> username@sshserver.com</code></pre></div>
+
+<p>其中 <code>-D 1984 username@sshserver.com</code> 的含义和 ssh 命令完全一致，实际上autossh 会将其原封不动的传递给 ssh 命令。<code>-M</code> 选项用来指定 autossh 用来发送探测包以监控通信状态的端口。指定为 0 将关闭此功能，autossh 会只在 ssh 退出（exit）时重启。Mac 下的 OpenSSH 通过设置 ServerAliveInterval 和 ServerAliveCountMax 选项可以让 SSH 客户端在失去服务器连接时自动退出。所以我们在这里并不需要监控端口。</p>
+
+<p>ok，将这两个选项的配置附加到 /etc/ssh/ssh_config 文件里：</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 每隔 60 秒发送一次请求给服务器以保持连接</span>
+ServerAliveInterval 60
+
+<span class="c"># 发送请求后服务器无响应达到 3 次的话自动断开连接</span>
+ServerAliveCountMax 3</code></pre></div>
+
+<p>这样当 ssh 发现无法连接服务器时会 exit，autossh 监听到 exit 信号将重启 ssh 通信连接。</p>
+
+<p>设置完自动连接，还可以通过 launchd 来设置开机自动启动 ssh。在 /Library/LaunchDaemons/ 或 ~/Library/LaunchAgents/ 下创建一个 plist 文件，假如名为 com.yourdomain.sshd.plist，文件输入以下内容：</p>
+
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="lineno"> 1</span> <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="lineno"> 2</span> <span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple Computer//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
+<span class="lineno"> 3</span> <span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 4</span> 	<span class="nt">&lt;dict&gt;</span>
+<span class="lineno"> 5</span>     	<span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
+<span class="lineno"> 6</span>     	<span class="nt">&lt;string&gt;</span>com.yourdomain.sshd<span class="nt">&lt;/string&gt;</span>
+<span class="lineno"> 7</span>     	<span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
+<span class="lineno"> 8</span>     	<span class="nt">&lt;array&gt;</span>
+<span class="lineno"> 9</span>         	<span class="nt">&lt;string&gt;</span>/usr/local/bin/autossh<span class="nt">&lt;/string&gt;</span>
+<span class="lineno">10</span>         	<span class="nt">&lt;string&gt;</span>-M<span class="nt">&lt;/string&gt;</span>
+<span class="lineno">11</span>         	<span class="nt">&lt;string&gt;</span>0<span class="nt">&lt;/string&gt;</span>
+<span class="lineno">12</span>         	<span class="nt">&lt;string&gt;</span>-D<span class="nt">&lt;/string&gt;</span>
+<span class="lineno">13</span>         	<span class="nt">&lt;string&gt;</span>1984<span class="nt">&lt;/string&gt;</span>
+<span class="lineno">14</span>         	<span class="nt">&lt;string&gt;</span>username@sshserver.com<span class="nt">&lt;/string&gt;</span>
+<span class="lineno">15</span>     	<span class="nt">&lt;/array&gt;</span>
+<span class="lineno">16</span>     	<span class="nt">&lt;key&gt;</span>KeepAlive<span class="nt">&lt;/key&gt;</span>
+<span class="lineno">17</span>     	<span class="nt">&lt;true/&gt;</span>
+<span class="lineno">18</span>     	<span class="nt">&lt;key&gt;</span>RunAtLoad<span class="nt">&lt;/key&gt;</span>
+<span class="lineno">19</span>     	<span class="nt">&lt;true/&gt;</span>
+<span class="lineno">20</span> 	<span class="nt">&lt;/dict&gt;</span>
+<span class="lineno">21</span> <span class="nt">&lt;/plist&gt;</span></code></pre></div>
+
+<p>然后将以上配置好的服务加入开机启动服务列表：</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">launchctl load ~/Library/LaunchAgents/com.yourdomain.sshd.plist</code></pre></div>
+
+<p>重启计算机，all done~</p>
+
+<p><strong>参考：</strong></p>
+
+<p>http://blog.hebine.com/archives/1621.html  <br />
+http://www.2cto.com/os/201301/182222.html</p>
+
+
+            </div>
+        
+    
+
+    
+        
+            <div class="blog-post">
+                <h2 class="post-title"><a href="/coding/2013/03/07/authorized_keys_config.html">ssh 配置 authorized_keys 后仍需输入密码问题</a></h2>
+                <p class="post-date">07 Mar 2013</p>
+                <p>原因在于 authorized_keys 文件写权限只能为所有者拥有。如果除所有者之外还有别的用户有写权限的话，出于安全原因 sshd 就不会使用此文件。所以仍需要用户手动输入密码。</p>
+
+<p>解决方法就很简单了，只需关闭组用户和其它用户的 authorized_keys 文件写权限即可。值得注意的是<strong>文件所在目录 .ssh 的写权限同样要对组用户和其它用户关闭。</strong>否则也会导致文件失效。</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 取消组用户和其它用户对 authorized_keys 文件的写权限</span>
+chmod go-w authorized_keys
+
+<span class="c"># 取消组用户和其它用户对 .ssh 目录的写权限</span>
+chmod go-w .ssh</code></pre></div>
+
+<p>断开链接后再 ssh 登录就不用输入密码了。</p>
+
+<p>PS：所有操作环境是指目标主机…</p>
+
+            </div>
+        
+    
+
+
+<!-- Pagination -->
+<div class="blog-pagination">
+    
+        <span class="pagination-previous">Previous</span>
+    
+    
+    <span class="pagination-page-number">Page: 1 of 1</span>
+    
+    
+        <span class="pagination-next">Next</span>
+    
+</div>
+        <footer class="blog-ft">
+            <p>by Me &copy; 2012-2013</p>
+            <p>smileherd#gmail.com</p>
+        </footer>
+    </body>
+</html>

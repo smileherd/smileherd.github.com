@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="/css/compiled/reset.css">
+        <link rel="stylesheet" href="/css/compiled/layout.css">
+        <link rel="stylesheet" href="/css/compiled/post.css">
+        <link rel="stylesheet" href="/css/compiled/pygments.monokai.css">
+        <!--[if lt IE 9]>
+            <script src="/js/html5shiv.js"></script>
+        <![endif]-->
+        <title>Mac 下 ssh 自动连接</title>
+    </head>
+    <body class="smileherd-blog">
+        <header class="blog-hd">
+            <h1 class="blog-title">
+                <span class="title-career">C.A.R.2.E.R</span>
+            </h1>
+        </header>
+        <nav class="blog-nav hidden">
+            <ul class="nav-list">
+                <li class="nav-item home"><a href="/">主页</a></li>
+                <li class="nav-item about-me"><a href="/about/">关于我</a></li>
+            </ul>
+        </nav>
+        <div class="blog-post">
+            <h2 class="post-title"><a href="/coding/2013/03/11/ssh_auto_connect.html">Mac 下 ssh 自动连接</a></h2>
+            <p class="post-date">11 Mar 2013</p>
+            <p>Mac 下借助 autossh 工具可以实现 ssh 断线自动连接功能。（在此之前，首先需要配置 <a href="http://smileherd.github.com/2013/03/07/authorized_keys_config">ssh 免输入密码登录</a>）</p>
+
+<p>autossh 通过监控 ssh 进程运行和 ssh 通道通信情况来判断 ssh 是否处于正常通信状态，一旦通信断开 autossh 将自动重启 ssh 连接。</p>
+
+<p>如果机器上已安装包管理器 Homebrew 或 MacPorts，那么安装 autossh 是很简单的：</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Homebrew 安装 autossh</span>
+brew install autossh
+
+<span class="c"># MacPorts 安装 autossh</span>
+port install autossh</code></pre></div>
+
+<p>当然，也可以自己下载 autossh 编译安装。</p>
+
+<p>安装完 autossh 之后就可以通过这条命令来启动 ssh 自动连接：</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">autossh -M <span class="m">0</span> -D <span class="m">1984</span> username@sshserver.com</code></pre></div>
+
+<p>其中 <code>-D 1984 username@sshserver.com</code> 的含义和 ssh 命令完全一致，实际上autossh 会将其原封不动的传递给 ssh 命令。<code>-M</code> 选项用来指定 autossh 用来发送探测包以监控通信状态的端口。指定为 0 将关闭此功能，autossh 会只在 ssh 退出（exit）时重启。Mac 下的 OpenSSH 通过设置 ServerAliveInterval 和 ServerAliveCountMax 选项可以让 SSH 客户端在失去服务器连接时自动退出。所以我们在这里并不需要监控端口。</p>
+
+<p>ok，将这两个选项的配置附加到 /etc/ssh/ssh_config 文件里：</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># 每隔 60 秒发送一次请求给服务器以保持连接</span>
+ServerAliveInterval 60
+
+<span class="c"># 发送请求后服务器无响应达到 3 次的话自动断开连接</span>
+ServerAliveCountMax 3</code></pre></div>
+
+<p>这样当 ssh 发现无法连接服务器时会 exit，autossh 监听到 exit 信号将重启 ssh 通信连接。</p>
+
+<p>设置完自动连接，还可以通过 launchd 来设置开机自动启动 ssh。在 /Library/LaunchDaemons/ 或 ~/Library/LaunchAgents/ 下创建一个 plist 文件，假如名为 com.yourdomain.sshd.plist，文件输入以下内容：</p>
+
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="lineno"> 1</span> <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="lineno"> 2</span> <span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple Computer//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
+<span class="lineno"> 3</span> <span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 4</span> 	<span class="nt">&lt;dict&gt;</span>
+<span class="lineno"> 5</span>     	<span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
+<span class="lineno"> 6</span>     	<span class="nt">&lt;string&gt;</span>com.yourdomain.sshd<span class="nt">&lt;/string&gt;</span>
+<span class="lineno"> 7</span>     	<span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
+<span class="lineno"> 8</span>     	<span class="nt">&lt;array&gt;</span>
+<span class="lineno"> 9</span>         	<span class="nt">&lt;string&gt;</span>/usr/local/bin/autossh<span class="nt">&lt;/string&gt;</span>
+<span class="lineno">10</span>         	<span class="nt">&lt;string&gt;</span>-M<span class="nt">&lt;/string&gt;</span>
+<span class="lineno">11</span>         	<span class="nt">&lt;string&gt;</span>0<span class="nt">&lt;/string&gt;</span>
+<span class="lineno">12</span>         	<span class="nt">&lt;string&gt;</span>-D<span class="nt">&lt;/string&gt;</span>
+<span class="lineno">13</span>         	<span class="nt">&lt;string&gt;</span>1984<span class="nt">&lt;/string&gt;</span>
+<span class="lineno">14</span>         	<span class="nt">&lt;string&gt;</span>username@sshserver.com<span class="nt">&lt;/string&gt;</span>
+<span class="lineno">15</span>     	<span class="nt">&lt;/array&gt;</span>
+<span class="lineno">16</span>     	<span class="nt">&lt;key&gt;</span>KeepAlive<span class="nt">&lt;/key&gt;</span>
+<span class="lineno">17</span>     	<span class="nt">&lt;true/&gt;</span>
+<span class="lineno">18</span>     	<span class="nt">&lt;key&gt;</span>RunAtLoad<span class="nt">&lt;/key&gt;</span>
+<span class="lineno">19</span>     	<span class="nt">&lt;true/&gt;</span>
+<span class="lineno">20</span> 	<span class="nt">&lt;/dict&gt;</span>
+<span class="lineno">21</span> <span class="nt">&lt;/plist&gt;</span></code></pre></div>
+
+<p>然后将以上配置好的服务加入开机启动服务列表：</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">launchctl load ~/Library/LaunchAgents/com.yourdomain.sshd.plist</code></pre></div>
+
+<p>重启计算机，all done~</p>
+
+<p><strong>参考：</strong></p>
+
+<p>http://blog.hebine.com/archives/1621.html  <br />
+http://www.2cto.com/os/201301/182222.html</p>
+
+
+        </div>
+        <footer class="blog-ft">
+            <p>by Me &copy; 2012-2014</p>
+            <p>smileherd#gmail.com</p>
+        </footer>
+    </body>
+</html>
